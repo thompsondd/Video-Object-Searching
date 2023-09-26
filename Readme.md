@@ -118,7 +118,7 @@
 
 <summary> Level 3: Recognizing a particular individual</summary>
 
-- At this level, I utilized three neural networks to tackle two distinct sub-tasks.
+- At this level, I utilized two neural networks to tackle three distinct sub-tasks.
 - The first task involves detecting humans within the frame. To accomplish this, I employed YOLO version 8. Subsequently, I cropped the area encompassing potential objects based on the coordinates suggested by YOLO.
 - The second task entails scoring the similarity between the target object (provided by the user) and potential objects. For this purpose, I employed the LoFTR model, as suggested in the paper "[Detector-Free Local Feature Matching with Transformers](https://zju3dv.github.io/loftr)".
     - This model identifies and extracts key points from the given image and the suggested area. It then establishes mappings between pairs of key points and provides confidence scores for these pairs.
