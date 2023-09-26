@@ -4,9 +4,9 @@
 - **Overview**:
     - The script is in jupyter notebook "[Script_Task1.ipynb](./Script_Task1.ipynb)"
     - This task involves searching for a specified object shown in an input video and then saving the results as frames.
-    - There are three different level of finding object X:
+    - There are three different levels of finding object X:
         - Level 1: Find similar objects with no properties
-        - Level 2: Find object with color property
+        - Level 2: Find an object with the color property
         - Level 3: Recognizing a particular individual
     - Comprehensive information about the input data, along with a few demonstrations of output frames and solution concepts, is provided for each level.
     
@@ -26,7 +26,7 @@
     </detais>
         
 - **Accessing Results**:
-    - PLease visit [OneDrive folders](https://uithcm-my.sharepoint.com/:f:/g/personal/20521159_ms_uit_edu_vn/ErD0PyNokoBBpmdhy4l_8UEBfGlAg7kb56Na9ESFuKcHFw?e=hqgIsm) to access all the frames for each level of the video.
+    - Please visit [OneDrive folders](https://uithcm-my.sharepoint.com/:f:/g/personal/20521159_ms_uit_edu_vn/ErD0PyNokoBBpmdhy4l_8UEBfGlAg7kb56Na9ESFuKcHFw?e=hqgIsm) to access all the frames for each level of the video.
     - If you wish to download the frames, kindly visit [Google Drive folders](https://drive.google.com/drive/folders/1O9vLQIYHs27EWRpk_XKFqv87VzaoiQ38?usp=sharing) due to the efficient download system provided by Google Drive.
 ## 2. Input and Output
 <details><summary> Level 1: Find similar objects with no properties</summary>
@@ -105,7 +105,7 @@
 
 <details>
 
-<summary> Level 2: Find object with color property</summary>
+<summary> Level 2: Find an object with color property</summary>
 
 - I employed YOLO version 8 to identify trucks within each frame of the video.
 - Subsequently, I generated a mask for each object using the model and used these masks to extract the object's pixel colors.
@@ -116,16 +116,16 @@
 
 <details>
 
-<summary> Level 3: Find a particular person</summary>
+<summary> Level 3: Recognizing a particular individual</summary>
 
-- In this level, I utilized three neural networks to tackle two distinct sub-tasks.
+- At this level, I utilized two neural networks to tackle three distinct sub-tasks.
 - The first task involves detecting humans within the frame. To accomplish this, I employed YOLO version 8. Subsequently, I cropped the area encompassing potential objects based on the coordinates suggested by YOLO.
 - The second task entails scoring the similarity between the target object (provided by the user) and potential objects. For this purpose, I employed the LoFTR model, as suggested in the paper "[Detector-Free Local Feature Matching with Transformers](https://zju3dv.github.io/loftr)".
-    - This model identifies and extracts keypoints from the given image and the suggested area. It then establishes mappings between pairs of keypoints and provides confidence scores for these pairs.
+    - This model identifies and extracts key points from the given image and the suggested area. It then establishes mappings between pairs of key points and provides confidence scores for these pairs.
     - Using the confidence scores of these pairs, I filtered out pairs with scores exceeding a specified threshold (I set it at 0.5, indicating higher model confidence). I counted the pairs meeting this criterion, using the count as a similarity score.
     - If the suggested object achieves a similarity score greater than the threshold (I recommend 85), I include this object in the tracking list.
 - The third task involves object tracking.
     - If an object meets the similarity criterion, there is no need to recheck or recompute its similarity score before plotting a bounding box around it in the frame.
-    - Conversely, if an object has been rejected a certain number of times or has consistently failed to attain a score greater than the threshold, conserving computational resources becomes crucial.
+    - Conversely, if an object has been rejected a certain number of times, conserving computational resources becomes crucial.
     - Fortunately, YOLO version 8 supports object tracking. I retrieve the object's ID and keep a record of the number of times it has been rejected.
 </details>
