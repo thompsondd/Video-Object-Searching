@@ -116,7 +116,7 @@
 
 <details>
 
-<summary> Level 3: Find a particular person</summary>
+<summary> Level 3: Recognizing a particular individual</summary>
 
 - At this level, I utilized three neural networks to tackle two distinct sub-tasks.
 - The first task involves detecting humans within the frame. To accomplish this, I employed YOLO version 8. Subsequently, I cropped the area encompassing potential objects based on the coordinates suggested by YOLO.
